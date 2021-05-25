@@ -45,6 +45,8 @@ const winner = turn => {
   if (score[turn] >= 100) {
     alert(`PLAYER ${turn + 1} MENANG`);
     reset();
+    roll = 0;
+    score = [0, 0];
   }
 };
 
