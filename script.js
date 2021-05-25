@@ -38,20 +38,23 @@ const reset = () => {
   score1El.textContent = 0;
   currentScoreP0.textContent = 0;
   currentScoreP1.textContent = 0;
+  player0.classList.remove('player--winner');
+  player1.classList.remove('player--winner');
 };
 
 // function winner
 const winner = turn => {
   if (score[turn] >= 100) {
-    alert(`PLAYER ${turn + 1} MENANG`);
-    reset();
-    roll = 0;
-    score = [0, 0];
+    document.querySelector(`.player--${turn}`).classList.add('player--winner');
+    btnRoll.classList.add('hidden');
+    btnHold.classList.add('hidden');
   }
 };
 
 // btn new game
 btnNew.addEventListener('click', function () {
+  btnRoll.classList.remove('hidden');
+  btnHold.classList.remove('hidden');
   reset();
   diceEl.classList.add('hidden');
   let firstTurn = Math.floor(Math.random() * 2) + 1;
